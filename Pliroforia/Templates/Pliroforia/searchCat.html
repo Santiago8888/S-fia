@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        {% load static %}
+        <title>CATDAF</title>
+        <link rel="shortcut icon" type="image/png" href="{% static "Pliroforia/C.png" %}"/>
+        <link href="{% static "Pliroforia/style.css" %}" rel="stylesheet">
+        <link href="{% static "Pliroforia/bootstrap/CSS/bootstrap.css" %}" rel="stylesheet">
+    </head>
+    <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#">CATDAF</a>
+          </a>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/logout">logout</a></li>
+              <li><a href="#">       </a></li>
+            </ul>        
+      </div>
+  </nav>
+    <h1> Buscar Catalizadores</h1><br>
+    <form action="." method="GET">
+        <a href="#">       </a>
+        <label for="q">       </label>
+        <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Digite el código por favor...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Buscar!</button>
+          </span>
+        </div><!-- /input-group -->
+        </div><br>
+    </form>
+    {% if query %}
+        <br><h3>           Resultados para {{ query|escape }}:</h3><br>
+        {% if results %}
+        <ul>
+            {% for catalizador in results %}
+                <div class="col-lg-3">
+                  <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">{{ catalizador|escape }}</h3>
+                    </div>                
+                    <div class="panel-body">
+                      <img src="{% static "Pliroforia/C237.png" %}" alt="My image"/>
+                    </div>
+                    <div class="panel-footer">
+                      <h4 class="text-right"><font color="red">$ {{catalizador.precio}}</h4></div>
+                  </div>
+                </div>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No Catalytics found</p>
+        {% endif %}
+    {% endif %}
+    </body>
+</html>
